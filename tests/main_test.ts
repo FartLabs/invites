@@ -1,5 +1,5 @@
-import { assertEquals } from "https://deno.land/std@0.213.0/assert/mod.ts";
-import { InvitesKv } from "../lib/db.ts";
+import { assertEquals } from "@std/assert";
+import { InvitesKv } from "#/lib/db.ts";
 
 // Utility to create a test KV (using in-memory if possible, or a temp file)
 // For simplicity in tests, we can just point to a new temp KV
