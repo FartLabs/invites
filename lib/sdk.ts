@@ -66,6 +66,13 @@ export class InvitesSdk {
    */
   async create(params: CreateInviteParams = {}): Promise<Invite> {
     const url = new URL(`${this.baseUrl}/v1/invites`);
+    if (params.alphabet) {
+      url.searchParams.set("alphabet", params.alphabet);
+    }
+    if (params.size) {
+      url.searchParams.set("size", params.size.toString());
+    }
+
     const headers: Record<string, string> = {
       "Content-Type": "application/json",
     };
@@ -73,10 +80,15 @@ export class InvitesSdk {
       headers["X-Api-Key"] = this.apiKey;
     }
 
+    const body: Record<string, unknown> = {};
+    if (params.code) {
+      body.code = params.code;
+    }
+
     const response = await this.fetch(url, {
       method: "POST",
       headers,
-      body: JSON.stringify(params),
+      body: JSON.stringify(body),
     });
 
     if (!response.ok) {

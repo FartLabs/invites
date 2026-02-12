@@ -1,4 +1,5 @@
 import { ulid } from "@std/ulid/ulid";
+import { customAlphabet, nanoid } from "nanoid";
 import { Router } from "@fartlabs/rt";
 import { InvitesKv } from "./lib/db.ts";
 import { createInviteParamsSchema, listParamsSchema } from "./lib/schemas.ts";
@@ -70,7 +71,15 @@ export const router: Router = new Router()
       );
     }
 
-    const code = parseResult.data.code ?? ulid();
+    const url = new URL(ctx.request.url);
+    const alphabet = url.searchParams.get("alphabet");
+    const sizeString = url.searchParams.get("size");
+    const size = sizeString ? parseInt(sizeString) : undefined;
+
+    const code = parseResult.data.code ??
+      (alphabet
+        ? customAlphabet(alphabet, size ?? 21)()
+        : (size ? nanoid(size) : ulid()));
     const now = Date.now();
     const invite = {
       code,

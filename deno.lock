@@ -6,6 +6,7 @@
     "jsr:@std/http@^1.0.21": "1.0.24",
     "jsr:@std/internal@^1.0.12": "1.0.12",
     "jsr:@std/ulid@1": "1.0.0",
+    "npm:nanoid@^5.1.6": "5.1.6",
     "npm:zod@^4.3.6": "4.3.6"
   },
   "jsr": {
@@ -32,6 +33,10 @@
     }
   },
   "npm": {
+    "nanoid@5.1.6": {
+      "integrity": "sha512-c7+7RQ+dMB5dPwwCp4ee1/iV/q2P6aK1mTZcfr1BTuVlyW9hJYiMPybJCcnBlQtuSmTIWNeazm/zqNoZSSElBg==",
+      "bin": true
+    },
     "zod@4.3.6": {
       "integrity": "sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg=="
     }
@@ -75,6 +80,7 @@
       "jsr:@fartlabs/rt@^0.0.11",
       "jsr:@std/assert@^1.0.18",
       "jsr:@std/ulid@1",
+      "npm:nanoid@^5.1.6",
       "npm:zod@^4.3.6"
     ]
   }

@@ -36,6 +36,14 @@ export interface CreateInviteParams {
    * code is the code to create.
    */
   code?: string;
+  /**
+   * alphabet is the custom alphabet to use for code generation.
+   */
+  alphabet?: string;
+  /**
+   * size is the custom size to use for code generation.
+   */
+  size?: number;
 }
 
 /**
@@ -44,6 +52,8 @@ export interface CreateInviteParams {
 export const createInviteParamsSchema: z.ZodType<CreateInviteParams> = z.object(
   {
     code: z.string().optional(),
+    alphabet: z.string().optional(),
+    size: z.number().int().min(1).optional(),
   },
 );
 

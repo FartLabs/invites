@@ -55,9 +55,12 @@ const sdk = new InvitesSdk({
   apiKey: "optional-api-key", // Include this if API_KEY is set on the server.
 });
 
-// Create a new invite.
-const invite = await sdk.create();
-console.log(invite);
+// Create a new invite with a custom ID.
+const invite = await sdk.create({
+  alphabet: "1234567890abcdef",
+  size: 10,
+});
+console.log(invite); // e.g., { code: "4f90d13a42", ... }
 
 // List invites.
 const { items } = await sdk.list();
